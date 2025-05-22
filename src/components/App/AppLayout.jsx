@@ -11,17 +11,24 @@ import {
   Bell,
   ChevronDown,
   ChevronRight,
+  LogOut,
+  Settings,
+  UserCircle,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import NotificationSheet from "../NotificationSheet"
+import NotificationDrawer from "./NotificationDrawer"
+import UserProfileDrawer from "./UserProfileDrawer"
 
 export default function AppLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [expandedMenus, setExpandedMenus] = useState({
-    explore: false, // Set to true by default to match the image
+    explore: false,
     myCase: false,
     myCreations: false,
   })
+  const [isNotificationDrawerOpen, setIsNotificationDrawerOpen] = useState(false)
+  const [isUserProfileDrawerOpen, setIsUserProfileDrawerOpen] = useState(false)
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const navigate = useNavigate()
 
   const toggleMenu = (menu) => {
@@ -33,6 +40,33 @@ export default function AppLayout() {
 
   const handleSignout = () => {
     navigate("/signin")
+  }
+
+  const toggleNotificationDrawer = () => {
+    setIsNotificationDrawerOpen(!isNotificationDrawerOpen)
+    // Close other drawers when opening this one
+    if (!isNotificationDrawerOpen) {
+      setIsUserProfileDrawerOpen(false)
+      setIsUserMenuOpen(false)
+    }
+  }
+
+  const toggleUserProfileDrawer = () => {
+    setIsUserProfileDrawerOpen(!isUserProfileDrawerOpen)
+    // Close other drawers when opening this one
+    if (!isUserProfileDrawerOpen) {
+      setIsNotificationDrawerOpen(false)
+      setIsUserMenuOpen(false)
+    }
+  }
+
+  const toggleUserMenu = () => {
+    setIsUserMenuOpen(!isUserMenuOpen)
+    // Close drawers when toggling menu
+    if (!isUserMenuOpen) {
+      setIsNotificationDrawerOpen(false)
+      setIsUserProfileDrawerOpen(false)
+    }
   }
 
   return (
@@ -66,14 +100,6 @@ export default function AppLayout() {
             <span>Home</span>
           </NavLink>
 
-          {/* <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
-            <div className="flex items-center gap-3">
-              <Search size={20} />
-              <span>Explore</span>
-            </div>
-            <ChevronDown size={16} />
-          </div> */}
-
           {/* Explore Menu with Submenu */}
           <div>
             <div
@@ -96,7 +122,10 @@ export default function AppLayout() {
                 <NavLink
                   to="/gigs"
                   className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors", isActive && "bg-[#a8e9d5] text-gray-900")
+                    cn(
+                      "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
+                      isActive && "bg-[#a8e9d5] text-gray-900",
+                    )
                   }
                 >
                   Gigs
@@ -104,7 +133,10 @@ export default function AppLayout() {
                 <NavLink
                   to="/courses"
                   className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors", isActive && "bg-[#a8e9d5] text-gray-900")
+                    cn(
+                      "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
+                      isActive && "bg-[#a8e9d5] text-gray-900",
+                    )
                   }
                 >
                   Courses
@@ -112,7 +144,10 @@ export default function AppLayout() {
                 <NavLink
                   to="/rewards"
                   className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors", isActive && "bg-[#a8e9d5] text-gray-900")
+                    cn(
+                      "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
+                      isActive && "bg-[#a8e9d5] text-gray-900",
+                    )
                   }
                 >
                   Rewards
@@ -133,103 +168,6 @@ export default function AppLayout() {
             <Briefcase size={20} />
             <span>Case</span>
           </NavLink>
-
-          {/* mycase with submenu  */}
-          {/* <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
-            <div className="flex items-center gap-3">
-              <Briefcase size={20} />
-              <span>My Case</span>
-            </div>
-            <ChevronDown size={16} />
-          </div> */}
-          {/* My Case with Dropdown */}
-          {/* <div>
-            <div
-              className={cn(
-                "flex items-center justify-between gap-3 px-4 py-3 rounded-md hover:bg-gray-100 transition-colors cursor-pointer",
-                expandedMenus.myCase && "text-black rounded-t-md rounded-b-none",
-              )}
-              onClick={() => toggleMenu("myCase")}
-            >
-              <div className="flex items-center gap-3">
-                <Briefcase size={20} />
-                <span>My Case</span>
-              </div>
-              <ChevronDown size={16} className={cn("transition-transform", expandedMenus.myCase && "rotate-180")} />
-            </div>
-
-            //My Case Submenu
-            {expandedMenus.myCase && (
-              <div className="ml-10 space-y-1 mt-1">
-                <NavLink
-                  to="/case/active"
-                  className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-800 transition-colors", isActive && "text-white")
-                  }
-                >
-                  Active Cases
-                </NavLink>
-                <NavLink
-                  to="/case/archived"
-                  className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-800 transition-colors", isActive && "text-white")
-                  }
-                >
-                  Archived
-                </NavLink>
-              </div>
-            )}
-          </div> */}
-
-          {/* <div className="flex items-center justify-between gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
-            <div className="flex items-center gap-3">
-              <PenTool size={20} />
-              <span>My Creations</span>
-            </div>
-            <ChevronDown size={16} />
-          </div> */}
-
-          {/* My Creations with Dropdown */}
-          {/* <div>
-            <div
-              className={cn(
-                "flex items-center justify-between gap-3 px-4 py-3 rounded-md hover:bg-gray-100 transition-colors cursor-pointer",
-                expandedMenus.myCreations && "text-black rounded-t-md rounded-b-none",
-              )}
-              onClick={() => toggleMenu("myCreations")}
-            >
-              <div className="flex items-center gap-3">
-                <PenTool size={20} />
-                <span>My Creations</span>
-              </div>
-              <ChevronDown
-                size={16}
-                className={cn("transition-transform", expandedMenus.myCreations && "rotate-180")}
-              />
-            </div>
-
-           
-            {expandedMenus.myCreations && (
-              <div className="ml-10 space-y-1 mt-1">
-                <NavLink
-                  to="/creations/courses"
-                  className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors", isActive && "bg-[#a8e9d5] text-gray-900")
-                  }
-                >
-                  My Courses
-                </NavLink>
-                <NavLink
-                  to="/creations/gigs"
-                  className={({ isActive }) =>
-                    cn("block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors", isActive && "bg-[#a8e9d5] text-gray-900")
-                  }
-                >
-                  My Gigs
-                </NavLink>
-              </div>
-            )}
-          </div> */}
 
           <NavLink
             to="/creations"
@@ -287,19 +225,12 @@ export default function AppLayout() {
         {/* User Profile at Bottom */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
           <div className="flex items-center gap-3">
-            <img
-              src="/avatar.jpeg"
-              alt="User profile"
-              className="w-10 h-10 rounded-full object-cover"
-            />
+            <img src="/avatar.jpeg" alt="User profile" className="w-10 h-10 rounded-full object-cover" />
             <div className="flex-1 min-w-0">
               <p className="font-medium truncate">Abayomi Oluwu</p>
               <p className="text-xs text-gray-500 truncate">abayomioluwu@DoGigz.com</p>
             </div>
-            <button 
-            className="text-gray-500"
-            onClick={handleSignout}
-            >
+            <button className="text-gray-500" onClick={handleSignout} aria-label="Sign out">
               <ChevronRight size={18} />
             </button>
           </div>
@@ -314,6 +245,7 @@ export default function AppLayout() {
           <button
             className="lg:hidden p-2 rounded-md text-gray-500 hover:bg-gray-100"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -344,21 +276,68 @@ export default function AppLayout() {
             </div>
           </div>
 
+          <span className="md:hidden text-2xl font-bold">Dogigz</span>
+
           {/* User menu */}
           <div className="flex items-center gap-4">
-            <button className="relative p-2 text-gray-500 hover:bg-gray-100 rounded-full">
+            {/* Notification Bell */}
+            <button
+              className="relative p-2 text-gray-500 hover:bg-gray-100 rounded-full"
+              onClick={toggleNotificationDrawer}
+              aria-label="Notifications"
+              aria-expanded={isNotificationDrawerOpen}
+            >
               <Bell size={20} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" aria-hidden="true"></span>
             </button>
-            
-            <div className="flex items-center gap-2 cursor-pointer">
-              <img
-                src="/avatar.jpeg"
-                alt="User profile"
-                className="w-8 h-8 rounded-full object-cover"
-              />
-              <span className="hidden lg:inline-block font-medium">Abayomi</span>
-              <ChevronDown size={16} className="hidden lg:inline-block text-gray-500" />
+
+            {/* User Profile Dropdown */}
+            <div className="relative">
+              <div
+                className="flex items-center gap-2 cursor-pointer"
+                onClick={toggleUserMenu}
+                aria-expanded={isUserMenuOpen}
+                aria-haspopup="true"
+              >
+                <img src="/avatar.jpeg" alt="User profile" className="w-8 h-8 rounded-full object-cover" />
+                <span className="hidden lg:inline-block font-medium">Abayomi</span>
+                <ChevronDown
+                  size={16}
+                  className={cn(
+                    "hidden lg:inline-block text-gray-500 transition-transform",
+                    isUserMenuOpen && "rotate-180",
+                  )}
+                />
+              </div>
+
+              {/* User Dropdown Menu */}
+              {isUserMenuOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                  <button
+                    className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={toggleUserProfileDrawer}
+                  >
+                    <UserCircle size={16} />
+                    <span>View Profile</span>
+                  </button>
+                  <Link
+                    to="/settings"
+                    className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsUserMenuOpen(false)}
+                  >
+                    <Settings size={16} />
+                    <span>Settings</span>
+                  </Link>
+                  <hr className="my-1 border-gray-200" />
+                  <button
+                    className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                    onClick={handleSignout}
+                  >
+                    <LogOut size={16} />
+                    <span>Sign out</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </header>
@@ -369,11 +348,28 @@ export default function AppLayout() {
         </main>
       </div>
 
+      {/* Notification Drawer */}
+      <NotificationDrawer isOpen={isNotificationDrawerOpen} onClose={() => setIsNotificationDrawerOpen(false)} />
+
+      {/* User Profile Drawer */}
+      <UserProfileDrawer isOpen={isUserProfileDrawerOpen} onClose={() => setIsUserProfileDrawerOpen(false)} />
+
       {/* Overlay for mobile menu */}
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
+
+      {/* Overlay for drawers on mobile */}
+      {(isNotificationDrawerOpen || isUserProfileDrawerOpen) && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={() => {
+            setIsNotificationDrawerOpen(false)
+            setIsUserProfileDrawerOpen(false)
+          }}
         ></div>
       )}
     </div>
