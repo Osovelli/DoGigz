@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { Search, Paperclip, Send, Phone, Video, Smile } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Avatar } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Avatar } from "../../components/ui/avatar"
+import { Separator } from "../../components/ui/separator"
 
 // Sample conversations data
 const conversationsData = [
@@ -97,7 +97,7 @@ const messagesData = [
   },
 ]
 
-function MessagesPage() {
+function Messages() {
   const { id } = useParams()
   const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState("")
@@ -151,11 +151,11 @@ function MessagesPage() {
   }
 
   const handleStartCall = () => {
-    navigate(`/call/${activeConversation?.id}`)
+    navigate(`/dashboard/call/${activeConversation?.id}`)
   }
 
   const handleStartVideoCall = () => {
-    navigate(`/video-call/${activeConversation?.id}`)
+    navigate(`/dashboard/video-call/${activeConversation?.id}`)
   }
 
   return (
@@ -325,5 +325,5 @@ function MessagesPage() {
   )
 }
 
-export default MessagesPage
+export default Messages
 

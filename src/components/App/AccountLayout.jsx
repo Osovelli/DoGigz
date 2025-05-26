@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom"
 import { Bell, FileText, HelpCircle, LogOut, Lock, User } from "lucide-react"
@@ -8,15 +6,15 @@ import { cn } from "@/lib/utils"
 // Updated account navigation items with sections
 const accountItems = {
   general: [
-    { icon: User, label: "Edit Profile", href: "/account" },
-    { icon: FileText, label: "Work Samples", href: "/account/work-samples" },
-    { icon: Bell, label: "Notification", href: "/account/notification" },
-    { icon: Lock, label: "Login and security", href: "/account/security" },
+    { icon: User, label: "Edit Profile", href: "/dashboard/account" },
+    { icon: FileText, label: "Work Samples", href: "/dashboard/account/work-samples" },
+    { icon: Bell, label: "Notification", href: "/dashboard/account/notification" },
+    { icon: Lock, label: "Login and security", href: "/dashboard/account/change-password" },
   ],
   others: [
-    { icon: HelpCircle, label: "Help Center", href: "/account/help-center" },
-    { icon: FileText, label: "Terms & Conditions", href: "/account/terms" },
-    { icon: FileText, label: "Privacy Policy", href: "/account/privacy" },
+    { icon: HelpCircle, label: "Help Center", href: "/dashboard/account/help-center" },
+    { icon: FileText, label: "Terms & Conditions", href: "/dashboard/account/terms" },
+    { icon: FileText, label: "Privacy Policy", href: "/dashboard/account/privacy" },
   ],
 }
 
@@ -55,7 +53,7 @@ function AccountLayout() {
   return (
     <div className="min-h-screen bg-background">
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold mb-8">Account</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

@@ -3,6 +3,7 @@ import { Search, ChevronDown, ChevronUp } from "lucide-react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 
 export default function GigsPage() {
   // Filter states
@@ -32,6 +33,7 @@ export default function GigsPage() {
   })
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(8)
+  const navigate = useNavigate();
 
   // Sample gigs data
   const allGigs = [
@@ -229,6 +231,12 @@ export default function GigsPage() {
     window.scrollTo(0, 0)
   }
 
+  const handleViewGig = (gigId) => {
+    console.log(`Viewing gig with ID: ${gigId}`)
+    navigate('/dashboard/gig-detail/' + gigId) // Assuming you have a Navigate function to handle navigation
+    // Navigate to gig detail page or perform any other action
+  }
+
   return (
     <div className="p-4 lg:p-6">
       <h1 className="text-3xl font-bold mb-6">Explore</h1>
@@ -270,7 +278,10 @@ export default function GigsPage() {
                     ${gig.price}
                     <span className="text-sm font-normal">.00</span>
                   </p>
-                  <button className="text-sm px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50">
+                  <button 
+                  className="text-sm px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50"
+                  onClick={handleViewGig.bind(null, gig.id)}
+                  >
                     View Gig
                   </button>
                 </div>

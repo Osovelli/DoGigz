@@ -30,6 +30,10 @@ export default function AppLayout() {
   const [isUserProfileDrawerOpen, setIsUserProfileDrawerOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const navigate = useNavigate()
+  const location = window.location.pathname
+  const isDashboardPage = location.startsWith("/dashboard")
+  console.log("Current location:", location)
+  console.log("Is Dashboard Page:", isDashboardPage)
 
   const toggleMenu = (menu) => {
     setExpandedMenus((prev) => ({
@@ -70,11 +74,11 @@ export default function AppLayout() {
   }
 
   return (
-    <div className="flex max-h-screen bg-white">
+    <div className="flex max-h-dvh bg-white">
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transition-transform duration-300 lg:translate-x-0 lg:static lg:w-64",
+          "fixed min-h-screen inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transition-transform duration-300 lg:translate-x-0 lg:static lg:w-64",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
@@ -86,21 +90,22 @@ export default function AppLayout() {
         </div>
 
         {/* Navigation */}
-        <nav className="p-4 space-y-1">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              cn(
-                "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
-                isActive && "bg-[#a8e9d5] text-gray-900",
-              )
-            }
-          >
-            <Home size={20} />
-            <span>Home</span>
-          </NavLink>
+          <nav className="p-4 space-y-1">
+            <NavLink
+              to="/dashboard"
+              end // Add this prop to match exact path only
+              className={({ isActive }) =>
+                cn(
+            "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
+            isActive && "bg-[#a8e9d5] text-gray-900",
+                )
+              }
+            >
+              <Home size={20} />
+              <span>Home</span>
+            </NavLink>
 
-          {/* Explore Menu with Submenu */}
+            {/* Explore Menu with Submenu */}
           <div>
             <div
               className={cn(
@@ -120,7 +125,7 @@ export default function AppLayout() {
             {expandedMenus.explore && (
               <div className="ml-10 space-y-1 mt-1">
                 <NavLink
-                  to="/gigs"
+                  to="/dashboard/gigs"
                   className={({ isActive }) =>
                     cn(
                       "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
@@ -131,7 +136,7 @@ export default function AppLayout() {
                   Gigs
                 </NavLink>
                 <NavLink
-                  to="/courses"
+                  to="/dashboard/courses"
                   className={({ isActive }) =>
                     cn(
                       "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
@@ -142,7 +147,7 @@ export default function AppLayout() {
                   Courses
                 </NavLink>
                 <NavLink
-                  to="/rewards"
+                  to="/dashboard/rewards"
                   className={({ isActive }) =>
                     cn(
                       "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
@@ -157,7 +162,7 @@ export default function AppLayout() {
           </div>
 
           <NavLink
-            to="/case"
+            to="/dashboard/case"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -170,7 +175,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/creations"
+            to="/dashboard/creations"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -183,7 +188,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/wallet"
+            to="/dashboard/wallet"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -196,7 +201,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/message"
+            to="/dashboard/message"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -209,7 +214,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/account"
+            to="/dashboard/account"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
