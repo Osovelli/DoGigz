@@ -38,7 +38,7 @@ export default function Login() {
       setLoginError("")
     }
   }
-
+/* 
   const validateForm = () => {
     const newErrors = {}
 
@@ -58,18 +58,19 @@ export default function Login() {
 
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
-  }
+  } */
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!validateForm()) {
+    /* if (!validateForm()) {
       return
-    }
+    } */
 
     setIsSubmitting(true)
+    navigate("/")
 
-    try {
+    /* try {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
@@ -77,7 +78,7 @@ export default function Login() {
       if (formData.email === "admin@giggerz.com" && formData.password === "Admin@123") {
         // Store auth token or user info in localStorage/sessionStorage
         localStorage.setItem("adminAuth", "true")
-        navigate("/admin")
+        navigate("/")
       } else {
         // Check if email exists (in a real app, this would be a server response)
         if (formData.email !== "admin@giggerz.com") {
@@ -90,7 +91,7 @@ export default function Login() {
       setLoginError("An error occurred. Please try again.")
     } finally {
       setIsSubmitting(false)
-    }
+    } */
   }
 
 

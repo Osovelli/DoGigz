@@ -233,7 +233,7 @@ export default function GigsPage() {
 
   const handleViewGig = (gigId) => {
     console.log(`Viewing gig with ID: ${gigId}`)
-    navigate('/dashboard/gig-detail/' + gigId) // Assuming you have a Navigate function to handle navigation
+    navigate('/gig-detail/' + gigId) // Assuming you have a Navigate function to handle navigation
     // Navigate to gig detail page or perform any other action
   }
 

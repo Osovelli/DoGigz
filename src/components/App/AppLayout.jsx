@@ -92,7 +92,7 @@ export default function AppLayout() {
         {/* Navigation */}
           <nav className="p-4 space-y-1">
             <NavLink
-              to="/dashboard"
+              to=""
               end // Add this prop to match exact path only
               className={({ isActive }) =>
                 cn(
@@ -125,7 +125,7 @@ export default function AppLayout() {
             {expandedMenus.explore && (
               <div className="ml-10 space-y-1 mt-1">
                 <NavLink
-                  to="/dashboard/gigs"
+                  to="/gigs"
                   className={({ isActive }) =>
                     cn(
                       "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
@@ -136,7 +136,7 @@ export default function AppLayout() {
                   Gigs
                 </NavLink>
                 <NavLink
-                  to="/dashboard/courses"
+                  to="/courses"
                   className={({ isActive }) =>
                     cn(
                       "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
@@ -147,7 +147,7 @@ export default function AppLayout() {
                   Courses
                 </NavLink>
                 <NavLink
-                  to="/dashboard/rewards"
+                  to="/rewards"
                   className={({ isActive }) =>
                     cn(
                       "block py-2 px-2 rounded-md hover:bg-gray-100 transition-colors",
@@ -162,7 +162,7 @@ export default function AppLayout() {
           </div>
 
           <NavLink
-            to="/dashboard/case"
+            to="/case"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -175,7 +175,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/dashboard/creations"
+            to="/creations"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -188,7 +188,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/dashboard/wallet"
+            to="/wallet"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -201,7 +201,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/dashboard/message"
+            to="/message"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
@@ -214,7 +214,7 @@ export default function AppLayout() {
           </NavLink>
 
           <NavLink
-            to="/dashboard/account"
+            to="/account"
             className={({ isActive }) =>
               cn(
                 "flex items-center gap-3 px-4 py-3 rounded-md text-gray-700 hover:bg-gray-100 transition-colors",
