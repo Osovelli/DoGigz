@@ -68,7 +68,7 @@ export default function Login() {
     } */
 
     setIsSubmitting(true)
-    navigate("/")
+    navigate("/dashboard")
 
     /* try {
       // Simulate API call
@@ -165,7 +165,11 @@ export default function Login() {
               </Link>
             </div>
 
-            <CustomButton className="w-full bg-[#a8e9d5] hover:bg-[#98d9c5] text-black font-medium py-6 h-auto rounded-full mt-4">
+            <CustomButton 
+            className="w-full bg-[#a8e9d5] hover:bg-[#98d9c5] text-black font-medium py-6 h-auto rounded-full mt-4"
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+            >
               Sign In
             </CustomButton>
 

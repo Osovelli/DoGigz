@@ -156,9 +156,9 @@ function MyCreations() {
 
   const handleRowClick = (item) => {
     if (activeView === "gigs") {
-      navigate(`/dashboard/gigs/${item.id}`)
+      navigate(`/dashboard/gig-detail/${item.id}`)
     } else {
-      navigate(`/dashboard/courses/${item.id}`)
+      navigate(`/dashboard/course-detail/${item.id}`)
     }
   }
 

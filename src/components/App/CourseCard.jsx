@@ -3,7 +3,7 @@
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types"
 
-const CourseCard = ({ id, title, price, image, courseType, linkTo = `/courses/${id}`, className = "" }) => {
+const CourseCard = ({ id, title, price, image, courseType, linkTo = `/dashboard/courses/${id}`, className = "" }) => {
   return (
     <div
       className={`bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 transition-all hover:shadow-md ${className}`}

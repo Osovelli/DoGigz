@@ -3,6 +3,7 @@ import { Search, Users, Clock, Star, ChevronDown, ChevronUp, Check } from "lucid
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 
 export default function ExploreCoursesPage() {
   // Filter states
@@ -32,6 +33,7 @@ export default function ExploreCoursesPage() {
   const [startDate, setStartDate] = useState("Anytime")
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
+  const navigate = useNavigate()
 
   // Sample courses data
   const allCourses = [
@@ -40,7 +42,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "Image 1.png",
+      image: "/GetStarted.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -54,7 +56,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "image 2.png",
+      image: "/course banner.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -65,24 +67,10 @@ export default function ExploreCoursesPage() {
     },
     {
       id: 3,
-      title: "Google Data Analytics Course",
+      title: "IBM Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "image 3.png",
-      learners: "2k",
-      hours: 20,
-      rating: 3.5,
-      ratingCount: 128,
-      price: 98,
-      skills: ["Analyst"],
-      type: "1-On-1",
-    },
-    {
-      id: 4,
-      title: "Google Data Analytics Course",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "Image 4.png",
+      image: "/Image 4.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -92,11 +80,25 @@ export default function ExploreCoursesPage() {
       type: "Self Pace",
     },
     {
+      id: 4,
+      title: "Coursera Data Analytics Course",
+      description:
+        "ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
+      image: "/Image 1.png",
+      learners: "2k",
+      hours: 20,
+      rating: 3.5,
+      ratingCount: 128,
+      price: 98,
+      skills: ["Analyst"],
+      type: "1-On-1",
+    },
+    {
       id: 5,
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "Image 6.png",
+      image: "/Image 6.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -110,7 +112,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "image 8.jpg",
+      image: "/image 8.jpg",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -124,7 +126,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "illustration.png",
+      image: "/illustration.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -138,7 +140,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "colleagues.png",
+      image: "/colleagues.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -152,7 +154,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "image 5.1.png",
+      image: "/image 5.1.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -166,7 +168,7 @@ export default function ExploreCoursesPage() {
       title: "Google Data Analytics Course",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a ultrices mi, a tempor lectus. Quisque eget tellus nec mi venenatis condimentum. Sed rhoncus pell...",
-      image: "Image 1.png",
+      image: "/Image 1.png",
       learners: "2k",
       hours: 20,
       rating: 3.5,
@@ -317,6 +319,12 @@ export default function ExploreCoursesPage() {
     return count
   }
 
+  // Handle view course
+  const handleViewCourse = (course) => () => {
+    console.log(`Navigating to course ${course.id}: ${course.title}`)
+    navigate(`/dashboard/course-detail/${course.id}`)
+  }
+
   return (
     <div className="p-4 lg:p-6">
       <h1 className="text-3xl font-bold mb-6">Explore</h1>
@@ -378,7 +386,7 @@ export default function ExploreCoursesPage() {
                       ${course.price}
                       <span className="text-sm font-normal">.00</span>
                     </p>
-                    <button className="text-sm px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50">
+                    <button onClick={handleViewCourse(course)} className="text-sm px-4 py-1.5 border border-gray-300 rounded-full hover:bg-gray-50">
                       View Course
                     </button>
                   </div>
