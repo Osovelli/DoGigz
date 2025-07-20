@@ -4,7 +4,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
 import BankTransferWithdrawModal from "./BankTransferWithdrawModal"
-import PayPalWithdrawModal from "./PayPalWithdrawModal"
+import PaypalWithdrawModal from "./PaypalWithdrawModal"
 import EWalletWithdrawModal from "./EWalletWithdrawModal"
 import CustomButton from "@/components/CustomButton"
 
@@ -110,7 +110,7 @@ function WithdrawModal({ isOpen, onClose, walletBalance }) {
       />
 
       {/* PayPal Modal */}
-      <PayPalWithdrawModal
+      <PaypalWithdrawModal
         isOpen={isPayPalModalOpen}
         onClose={() => {
           setIsPayPalModalOpen(false)
