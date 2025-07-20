@@ -235,9 +235,9 @@ export default function AppLayout() {
               <p className="font-medium truncate">Abayomi Oluwu</p>
               <p className="text-xs text-gray-500 truncate">abayomioluwu@DoGigz.com</p>
             </div>
-            <button className="text-gray-500" onClick={handleSignout} aria-label="Sign out">
+            {/* <button className="text-gray-500" onClick={handleSignout} aria-label="Sign out">
               <ChevronRight size={18} />
-            </button>
+            </button> */}
           </div>
         </div>
       </aside>

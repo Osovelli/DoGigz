@@ -1,10 +1,10 @@
 import { Table } from "@/components/Table"
 import { Eye, Plus, Minus, RefreshCw, Briefcase, Trash2, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import FundWalletModal from "@/components/Modals.jsx/FundWalletModal"
-import CardFundingModal from "@/components/Modals.jsx/CardFundingModal"
-import ConvertPointsModal from "@/components/Modals.jsx/ConvertPointsModal"
-import WithdrawModal from "@/components/Modals.jsx/withdrawal/WithdrawModal"
+import FundWalletModal from "@/components/Modals/FundWalletModal"
+import CardFundingModal from "@/components/Modals/CardFundingModal"
+import ConvertPointsModal from "@/components/Modals/ConvertPointsModal"
+import WithdrawModal from "@/components/Modals/withdrawal/WithdrawModal"
 import { useState } from "react"
 
 export default function WalletPage() {

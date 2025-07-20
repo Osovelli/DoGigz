@@ -45,10 +45,10 @@ function AccountLayout() {
     }
   }, [location])
 
-  const handleLogout = () => {
+  /* const handleLogout = () => {
     // Add logout logic here
     navigate("/signin")
-  }
+  } */
 
   return (
     <div className="min-h-screen bg-background">
@@ -139,7 +139,7 @@ function AccountLayout() {
               </div>
 
               {/* Logout Button */}
-              <div className="px-6 py-4 border-t">
+              {/* <div className="px-6 py-4 border-t">
                 <button
                   onClick={handleLogout}
                   className="flex items-center justify-center gap-2 w-full px-4 py-2 text-sm rounded-lg transition-colors bg-red-50 text-red-500 hover:bg-red-100"
@@ -147,7 +147,7 @@ function AccountLayout() {
                   <LogOut className="h-4 w-4" />
                   Logout
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
 

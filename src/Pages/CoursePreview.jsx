@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ArrowLeft, Star, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import PublishCourseModal from "@/components/Modals.jsx/PublishCourseModal"
+import PublishCourseModal from "@/components/Modals/PublishCourseModal"
 
 function CoursePreview() {
   const navigate = useNavigate()
