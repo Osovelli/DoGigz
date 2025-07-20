@@ -84,7 +84,7 @@ export default function MyCasePage() {
   // Handle view gig click
   const handleViewGig = (gigId, gigTitle) => {
     // Navigate to the gig detail page with the gig ID
-    navigate(`/gig-detail/${gigId}`, { state: { gigTitle } })
+    navigate(`/dashboard/gig-detail/${gigId}`, { state: { gigTitle } })
   }
 
   return (

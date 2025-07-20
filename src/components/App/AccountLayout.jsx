@@ -6,15 +6,15 @@ import { cn } from "@/lib/utils"
 // Updated account navigation items with sections
 const accountItems = {
   general: [
-    { icon: User, label: "Edit Profile", href: "/account" },
-    { icon: FileText, label: "Work Samples", href: "/account/work-samples" },
-    { icon: Bell, label: "Notification", href: "/account/notification" },
-    { icon: Lock, label: "Login and security", href: "/account/change-password" },
+    { icon: User, label: "Edit Profile", href: "/dashboard/account" },
+    { icon: FileText, label: "Work Samples", href: "/dashboard/account/work-samples" },
+    { icon: Bell, label: "Notification", href: "/dashboard/account/notification" },
+    { icon: Lock, label: "Login and security", href: "/dashboard/account/change-password" },
   ],
   others: [
-    { icon: HelpCircle, label: "Help Center", href: "/account/help-center" },
-    { icon: FileText, label: "Terms & Conditions", href: "/account/terms" },
-    { icon: FileText, label: "Privacy Policy", href: "/account/privacy" },
+    { icon: HelpCircle, label: "Help Center", href: "/dashboard/account/help-center" },
+    { icon: FileText, label: "Terms & Conditions", href: "/dashboard/account/terms" },
+    { icon: FileText, label: "Privacy Policy", href: "/dashboard/account/privacy" },
   ],
 }
 

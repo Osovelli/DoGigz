@@ -82,16 +82,16 @@ function App() {
 
         {/* DoGigz routes */}
         {/* Main routes */}
-        <Route path="/home" element={<Landing />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
 
         {/* app routes */}
-        <Route path="/" element={<AppLayout />}>
+        <Route path="/dashboard" element={<AppLayout />}>
           <Route index element={<HomePage />} />
           <Route path="all-courses" element={<AllCoursesPage />} />
           <Route path="course-history" element={<CourseHistoryPage />} />
-          <Route path="/account" element={<AccountLayout />}>
+          <Route path="/dashboard/account" element={<AccountLayout />}>
             <Route index element={<EditProfilePage />} />
             <Route path="work-samples" element={<WorkSamples />} />
             <Route path="notification" element={<Notification />} />
