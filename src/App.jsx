@@ -11,7 +11,7 @@ import LivenessCheck from "./Pages/Auth/LivenessCheck"
 import CompleteProfile from "./Pages/Auth/CompleteProfile"
 import JobPreferences from "./Pages/Auth/JobPreference"
 import ResetPassword from "./Pages/Auth/ResetPassword"
-import CreateCourse from "./Pages/CreateCourse"
+//import CreateCourse from "./Pages/CreateCourse"
 import MyCreations from "./Pages/MyCreation"
 import CourseHistoryPage from "./Pages/CourseHistoryPage"
 import WorkSamples from "./Pages/Account/WorkSample"
@@ -36,6 +36,9 @@ import MyCasePage from "./Pages/Case/MyCasePage"
 import Messages from "./Pages/Message/MessagesPage"
 import GigDetailPage from "./Pages/Case/GigsDetailPage"
 import VideoCallPage from "./Pages/VideoCallPage"
+import CreateCoursePage from "./Pages/CreateCourse"
+import CreateGigPage from "./Pages/CreateGig"
+import OneOnOneCourseDetailsPage from "./Pages/OneOnOneCourseDetailsPage"
 
 
 
@@ -103,11 +106,13 @@ function App() {
           </Route>
           <Route path="case" element={<MyCasePage />} />
           <Route path="creations" element={<MyCreations />} />
-          <Route path="create-course" element={<CreateCourse />} />
+          <Route path="create-course" element={<CreateCoursePage />} />
+          <Route path="create-gig" element={<CreateGigPage />} />
           <Route path="wallet" element={<WalletPage />} />
           <Route path="gigs" element={<GigsPage />} />
           <Route path="gig-detail/:gigId" element={<GigDetailPage />} />
           <Route path="courses" element={<ExploreCoursesPage />} />
+          <Route path="course-detail/:courseId" element={<OneOnOneCourseDetailsPage />} />
           <Route path="rewards" element={<RewardsPage />} />
           
           <Route path="message" element={<Messages />} />

@@ -10,7 +10,7 @@ export function Hero() {
         <img src="/hero image.jpg" className="object-cover w-full h-full" />
       </div>
       <div className="relative z-10 mx-auto flex flex-col items-center px-4 text-center md:px-6 lg:px-8">
-        <h1 className="mb-4 text-2xl text-slate-700 font-bold tracking-tight md:text-5xl lg:text-6xl">
+        <h1 className="mb-4 text-2xl text-white font-bold tracking-tight md:text-5xl lg:text-6xl">
           Gain <span className="text-[#F2FCB2]">Skills</span>. <span className="text-[#DBFAD1]">Get Gigs.</span>
           <br />
           Grow Your <span className="text-basic">Career</span>.
